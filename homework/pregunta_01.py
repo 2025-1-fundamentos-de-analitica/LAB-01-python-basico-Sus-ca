@@ -14,3 +14,12 @@ def pregunta_01():
     214
 
     """
+    with open("files/input/data.csv", "r") as file:
+        total = 0
+        for line in file:
+            total += int(line.split("\t")[1])
+    return total
+
+
+if __name__ == "__main__":
+    print(pregunta_01())

@@ -16,3 +16,21 @@ def pregunta_11():
 
 
     """
+    letter_sums = {}
+
+    with open("files/input/data.csv", "r") as file:
+        for line in file:
+            columns = line.strip().split("\t")
+            col2_value = int(columns[1])
+            col4_letters = columns[3].split(",")
+            
+            for letter in col4_letters:
+                if letter in letter_sums:
+                    letter_sums[letter] += col2_value
+                else:
+                    letter_sums[letter] = col2_value
+    
+    return dict(sorted(letter_sums.items()))
+
+if __name__ == "__main__":
+    print(pregunta_11())

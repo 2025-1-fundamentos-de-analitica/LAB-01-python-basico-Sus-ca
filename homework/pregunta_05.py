@@ -15,3 +15,18 @@ def pregunta_05():
     [('A', 9, 2), ('B', 9, 1), ('C', 9, 0), ('D', 8, 3), ('E', 9, 1)]
 
     """
+
+    with open("files/input/data.csv", "r") as file:
+        data = {}
+        for line in file:
+            letter = line.split("\t")[0]
+            value = int(line.split("\t")[1])
+            if letter in data:
+                data[letter].append(value)
+            else:
+                data[letter] = [value]
+
+    return [(letter, max(values), min(values)) for letter, values in sorted(data.items())]
+
+if __name__ == "__main__":
+    print(pregunta_05())

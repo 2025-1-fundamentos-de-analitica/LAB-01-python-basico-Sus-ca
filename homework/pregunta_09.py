@@ -11,7 +11,7 @@ def pregunta_09():
     Retorne un diccionario que contenga la cantidad de registros en que
     aparece cada clave de la columna 5.
 
-    Rta/
+   Rta/
     {'aaa': 13,
      'bbb': 16,
      'ccc': 23,
@@ -24,3 +24,19 @@ def pregunta_09():
      'jjj': 18}}
 
     """
+
+    with open("files/input/data.csv", "r") as file:
+        data = {}
+        for line in file:
+            values = line.split("\t")[4].split(",")
+            for value in values:
+                key = value.split(":")[0]
+                if key in data:
+                    data[key] += 1
+                else:
+                    data[key] = 1
+
+    return data
+
+if __name__ == "__main__":
+    print(pregunta_09())
